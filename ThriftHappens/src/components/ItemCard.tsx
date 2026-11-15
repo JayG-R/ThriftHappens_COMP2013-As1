@@ -1,9 +1,11 @@
 import type { ClothingProduct } from "../data/data";
 import type { ItemInfo } from "./ThriftHappensApp";
+import type { CheckoutItem } from "./ThriftHappensApp";
 
 export interface ItemCardProps extends ClothingProduct {
     itemInfo: ItemInfo
     handleChangeQuantity: (delta: number) => void;
+    handleAddToCart: (checkoutItem: CheckoutItem) => void;
 }
 
 export default function ItemCard({
@@ -17,6 +19,7 @@ export default function ItemCard({
     price,
     itemInfo,
     handleChangeQuantity,
+    handleAddToCart,
 }: ItemCardProps) {
     return (
         <div className="ItemCard">
@@ -33,7 +36,20 @@ export default function ItemCard({
             <span>{itemInfo.itemQuantity}</span>
             <button onClick={() => handleChangeQuantity(1)}>{" + "}</button>  
             <br />
-            <button> {"Add to Cart"} </button>     
+            <button
+                    onClick={() =>
+                    handleAddToCart({
+                    id: crypto.randomUUID(),
+                    image: image,
+                    name: name,
+                    price: price,
+                    itemQuantity: itemInfo.itemQuantity,
+                    total: itemInfo.itemQuantity * price,
+                })
+                }
+                >
+                Add to Cart
+            </button>   
         </div>
     )
 }

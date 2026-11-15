@@ -5,6 +5,7 @@ export default function ItemsContainer ({
     data,
     itemInfo,
     handleChangeQuantity,
+    handleAddToCart,
 }: ItemsContainerProps) {
     return (
         <div>
@@ -21,6 +22,7 @@ export default function ItemsContainer ({
                     handleChangeQuantity={(delta: number) =>
                         handleChangeQuantity(item.id, delta)
                     }
+                    handleAddToCart={handleAddToCart}
                     />
                 );
             })}
