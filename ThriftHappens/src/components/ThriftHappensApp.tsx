@@ -36,7 +36,7 @@ export default function ThriftHappensApp({data}: ItemData) {
         setItemInfo((prevData) =>
             prevData.map((info) =>
             info.id === id
-            ? { ...info, quantity: Math.max(0, info.itemQuantity + delta) }
+            ? { ...info, itemQuantity: Math.max(0, info.itemQuantity + delta) }
             : info,
             ),
         );

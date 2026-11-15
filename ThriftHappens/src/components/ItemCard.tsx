@@ -22,12 +22,8 @@ export default function ItemCard({
         <div className="ItemCard">
             <h2>{name}</h2>
             <img src={image} alt="" height="100px" />
-            <h2>{
-            itemInfo.quantity == 0
-            ? "Out of Stock"
-            : ""
-            }</h2>
-            
+            <h2>{itemInfo.quantity == 0 ? "Out of Stock" : ""}</h2>
+
             <p><b>{fit} • {category} • {color}</b></p>
             <p><b>{size}</b></p>
             <p>{description}</p>
