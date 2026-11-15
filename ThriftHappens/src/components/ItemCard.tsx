@@ -30,10 +30,10 @@ export default function ItemCard({
             <p><b>${price.toFixed(2)}</b></p>
             <button onClick={() => handleChangeQuantity(-1)}>{" - "}
             </button>
-            <span> {itemInfo.itemQuantity} </span>
+            <span>{itemInfo.itemQuantity}</span>
             <button onClick={() => handleChangeQuantity(1)}>{" + "}</button>  
             <br />
-            <button>{"Add to Cart"}</button>     
+            <button> {"Add to Cart"} </button>     
         </div>
     )
 }

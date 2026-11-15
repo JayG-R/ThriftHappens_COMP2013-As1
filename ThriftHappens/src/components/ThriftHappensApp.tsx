@@ -1,5 +1,6 @@
 import type { ClothingProduct } from "../data/data";
 import ItemsContainer from "./ItemsContainer";
+import CheckoutContainer from "./CheckoutContainer";
 import { useState } from "react";
 
 // interfaces -------------------------------------------------------
@@ -13,9 +14,23 @@ export interface ItemInfo {
    quantity: number;
    itemQuantity: number;
 }
+
+export interface CheckoutItem {
+  id: string;
+  image: string
+  name: string;
+  price: number;
+  itemQuantity: number;
+  total: number;
+}
+
 export interface ItemsContainerProps extends ItemData {
     itemInfo: ItemInfo[];
     handleChangeQuantity: (id: number, delta: number) => void;
+    handleAddToCart: (checkoutItem: CheckoutItem) => void;
+}
+export interface CheckoutContainerProps {
+  checkoutData: CheckoutItem[];
 }
 
 
@@ -28,6 +43,7 @@ export default function ThriftHappensApp({data}: ItemData) {
             itemQuantity: item.itemQuantity,
         })),
     );
+    const [checkoutItems, setCheckoutItems] = useState<CheckoutItem[]>([]);
 
     //Handlers --------------------------------------------------------
     
@@ -41,13 +57,23 @@ export default function ThriftHappensApp({data}: ItemData) {
             ),
         );
     }
+    function handleAddToCart(checkoutItem: CheckoutItem) {
+    setCheckoutItems((prevCart) => {
+      // Spread creates a new array and copies the submitted snapshot without
+      // mutating either the previous cart or the object passed by the card.
+      return [...prevCart, { ...checkoutItem }];
+    });
+  }
 
     return <div>
         <ItemsContainer 
         data={data} 
         itemInfo = {itemInfo}
         handleChangeQuantity={handleChangeQuantity}
+        handleAddToCart={handleAddToCart}
         />
+        <CheckoutContainer checkoutData={checkoutItems}/>
+    
     </div>
 
 }
