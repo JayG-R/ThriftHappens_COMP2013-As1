@@ -38,7 +38,7 @@ export const products: ClothingProduct[] = [
     description: "Navy Essential Crew Tee for men in navy.",
     size: "XL",
     price: 9,
-    quantity: 6,
+    quantity: 6, //6
     itemQuantity: 0,
   },
   {

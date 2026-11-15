@@ -22,13 +22,22 @@ export default function ItemCard({
         <div className="ItemCard">
             <h2>{name}</h2>
             <img src={image} alt="" height="100px" />
+            <h2>{
+            itemInfo.quantity == 0
+            ? "Out of Stock"
+            : ""
+            }</h2>
+            
             <p><b>{fit} • {category} • {color}</b></p>
             <p><b>{size}</b></p>
             <p>{description}</p>
             <p><b>${price.toFixed(2)}</b></p>
-            <button onClick={() => handleChangeQuantity(-1)}>{" - "}</button>
-            <span> {itemInfo.quantity} </span>
-            <button onClick={() => handleChangeQuantity(1)}>{" + "}</button>       
+            <button onClick={() => handleChangeQuantity(-1)}>{" - "}
+            </button>
+            <span> {itemInfo.itemQuantity} </span>
+            <button onClick={() => handleChangeQuantity(1)}>{" + "}</button>  
+            <br />
+            <button>{"Add to Cart"}</button>     
         </div>
     )
 }

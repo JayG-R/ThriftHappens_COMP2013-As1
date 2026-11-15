@@ -11,9 +11,9 @@ interface ItemData {
 export interface ItemInfo {
    id: number;
    quantity: number;
+   itemQuantity: number;
 }
-export interface ItemsContainerProps {
-    data: ClothingProduct[];
+export interface ItemsContainerProps extends ItemData {
     itemInfo: ItemInfo[];
     handleChangeQuantity: (id: number, delta: number) => void;
 }
@@ -25,15 +25,18 @@ export default function ThriftHappensApp({data}: ItemData) {
         data.map((item: ClothingProduct) => ({
             id: item.id,
             quantity: item.quantity,
+            itemQuantity: item.itemQuantity,
         })),
     );
 
     //Handlers --------------------------------------------------------
+    
+    //handles quantity ticker
     function handleChangeQuantity(id: number, delta: number) {
         setItemInfo((prevData) =>
             prevData.map((info) =>
             info.id === id
-            ? { ...info, quantity: Math.max(0, info.quantity + delta) }
+            ? { ...info, quantity: Math.max(0, info.itemQuantity + delta) }
             : info,
             ),
         );
