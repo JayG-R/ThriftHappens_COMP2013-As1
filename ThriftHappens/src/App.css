@@ -181,4 +181,11 @@
     right: 0;
     border-right-color: var(--border);
   }
+
+  .ItemCard {
+  width: 200px;
+  border: 1px grey solid;
+  border-radius: 5px;
+  margin: 5px;
+}
 }
