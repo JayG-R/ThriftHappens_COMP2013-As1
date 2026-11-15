@@ -1,13 +1,13 @@
 
 import './App.css';
-import ItemContainer from './components/ItemsContainer';
+import ThriftHappensApp from './components/ThriftHappensApp';
 import { products } from "./data/data";
 
 function App() {
     return (
        <>
         <h1>Fruits Counter</h1>
-        <ItemContainer data={products} />
+        <ThriftHappensApp data={products} />
       </>
     )
 }
